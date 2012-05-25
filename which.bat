@@ -1,10 +1,10 @@
 @Echo Off
 Rem http://acm.zhihua-lai.com, 25-May-2012
 
-If [%1]==[] goto USAGE
+If [%1]==[] Goto USAGE
 
 :LOOP
-  If [%1]==[] goto END
+  If [%1]==[] Goto END
 
 :CHECK
   SetLocal
@@ -16,9 +16,9 @@ If [%1]==[] goto USAGE
     )
   EndLocal
   Shift
-  goto LOOP
+  Goto LOOP
 
 :USAGE
-  echo which [Executable1] [Executable2] ..
+  Echo which [Executable1] [Executable2] ..
 
 :END
