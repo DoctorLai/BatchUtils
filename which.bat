@@ -19,6 +19,6 @@ If [%1]==[] Goto USAGE
   Goto LOOP
 
 :USAGE
-  Echo which [Executable1] [Executable2] ..
+  Echo %0 [Executable1] [Executable2] ..
 
 :END
