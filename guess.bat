@@ -9,7 +9,7 @@ set /a curbest=99999
 
 :newgame
   set /a cur=0  
-  set /a num=%RANDOM%*100/32767+1
+  set /a num=%RANDOM%%%100+1
   set left=1
   set right=100
   
