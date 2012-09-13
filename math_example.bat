@@ -4,6 +4,8 @@ REM An Example Batch Program to Calculate 355/113.
 REM OS: 2000, XP, 7 and after
 REM http://acm.zhihua-lai.com
    
+setlocal
+
     set /a a=355
     set /a b=113
     set /a c=100
@@ -23,8 +25,5 @@ REM http://acm.zhihua-lai.com
    
 :clean_up
     echo %o%
-    set o=
-    set a=
-    set b=
-    set c=
-    set d=
+
+endlocal
