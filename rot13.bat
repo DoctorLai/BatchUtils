@@ -34,7 +34,7 @@ goto end
 	set _subs=%_str%
 
 :loop
-	if not defined _subs goto :result
+	if not defined _subs goto result
 
 	::remove the first char
 	set _subs=%_subs:~1%
@@ -50,7 +50,7 @@ goto end
 
 	echo %s%
 	
-	goto :end
+	goto end
 
 :build
 	:: get the next character

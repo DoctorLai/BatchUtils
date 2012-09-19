@@ -2,12 +2,31 @@
 :: strlen.bat
 :: http://acm.zhihua-lai.com
 
-if [%1] EQU [] goto end
+setlocal enableextensions enabledelayedexpansion 
 
-:loop
-	if [%1] EQU [] goto end
+:begin
+	if "%1"=="-h" goto help
+	if "%1"=="" goto readin
+	goto start
+
+:readin
+	(set /p _s=) && (
+		call :start !_s!
+		goto readin	
+	) || (
+		goto end
+	)
+
+:help
+	echo Usage: %0 text
+	shift
+	goto begin
+
+goto end
+
+:start
 	set _len=0
-	set _str=%1
+	set _str=%*
 	set _subs=%_str%
 
 	:getlen		
@@ -18,7 +37,6 @@ if [%1] EQU [] goto end
 		goto getlen
 
 	:result
-		echo strlen("%1")=%_len%		
-		shift
-		goto loop
+		echo %_len%		
 :end
+endlocal

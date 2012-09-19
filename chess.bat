@@ -6,6 +6,7 @@ mode con cols=40 lines=20
 cls
 
 setlocal enableextensions enabledelayedexpansion 
+
 for %%i in (1 2 3 4 5 6 7 8) do (
 	set row=
 	for %%j in (1  2 3 4 5 6 7 8) do (
@@ -18,5 +19,5 @@ for %%i in (1 2 3 4 5 6 7 8) do (
 	)
 	echo !row!
 )
+
 endlocal
-exit /b
