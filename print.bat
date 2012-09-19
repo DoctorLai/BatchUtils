@@ -4,10 +4,25 @@
 
 setlocal enableextensions enabledelayedexpansion 
 
-if [%1] neq [] goto start
-echo %0 text
+:begin
+	if "%1"=="-h" goto help
+	if "%1"=="" goto readin
+	goto start
 
-goto :eof
+:readin
+	(set /p s=) && (
+		call :start !s!
+		goto readin	
+	) || (
+		goto end
+	)
+
+:help
+	echo Usage: %0 text
+	shift
+	goto begin
+
+goto end
 
 	:start
 		set _len=0
@@ -17,7 +32,7 @@ goto :eof
 		set _subs=%_str%
 
 	:loop
-		if not defined _subs goto :result
+		if not defined _subs goto result
 
 		::remove the first char
 		set _subs=%_subs:~1%
@@ -73,7 +88,7 @@ goto :eof
 			echo !_6!
 			echo !_7!
 		)
-		goto :eof
+		goto end
 
 	
 	:build
@@ -103,7 +118,7 @@ goto :eof
 			)
 		)
 
-		goto :eof
+		goto end
 
 :: Graphics
 
@@ -115,7 +130,7 @@ goto :eof
   (set _5=!_5!      )
   (set _6=!_6!  ¨€   )
   (set _7=!_7! ¨€    )
-goto :eof
+goto end
 
 :s_c2
   (set _1=!_1!      )
@@ -125,7 +140,7 @@ goto :eof
   (set _5=!_5!      )
   (set _6=!_6!  ¨€   )
   (set _7=!_7!      )
-goto :eof
+goto end
 
 :s_c3
   (set _1=!_1!      )
@@ -135,7 +150,7 @@ goto :eof
   (set _5=!_5!   ¨€  )
   (set _6=!_6!   ¨€  )
   (set _7=!_7!      )
-goto :eof
+goto end
 
 :s_c4
   (set _1=!_1!      )
@@ -145,7 +160,7 @@ goto :eof
   (set _5=!_5! ¨€¨€¨€¨€¨€)
   (set _6=!_6!  ¨€ ¨€ )
   (set _7=!_7!      )
-goto :eof
+goto end
 
 :s_!
   (set _1=!_1!  ¨€   )
@@ -155,7 +170,7 @@ goto :eof
   (set _5=!_5!  ¨€   )
   (set _6=!_6!      )
   (set _7=!_7!  ¨€   )
-goto :eof
+goto end
 
 :s_0
   (set _1=!_1! ¨€¨€¨€¨€ )
@@ -165,7 +180,7 @@ goto :eof
   (set _5=!_5! ¨€  ¨€ )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7! ¨€¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_1
   (set _1=!_1!  ¨€¨€  )
@@ -175,7 +190,7 @@ goto :eof
   (set _5=!_5!   ¨€  )
   (set _6=!_6!   ¨€  )
   (set _7=!_7! ¨€¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_2
   (set _1=!_1! ¨€¨€¨€¨€ )
@@ -185,7 +200,7 @@ goto :eof
   (set _5=!_5! ¨€    )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7! ¨€¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_3
   (set _1=!_1! ¨€¨€¨€¨€ )
@@ -195,7 +210,7 @@ goto :eof
   (set _5=!_5!    ¨€ )
   (set _6=!_6!    ¨€ )
   (set _7=!_7! ¨€¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_4
   (set _1=!_1! ¨€  ¨€ )
@@ -205,7 +220,7 @@ goto :eof
   (set _5=!_5!    ¨€ )
   (set _6=!_6!    ¨€ )
   (set _7=!_7!    ¨€ )
-goto :eof
+goto end
 
 :s_5
   (set _1=!_1! ¨€¨€¨€¨€ )
@@ -215,7 +230,7 @@ goto :eof
   (set _5=!_5!    ¨€ )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7! ¨€¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_6
   (set _1=!_1! ¨€¨€¨€  )
@@ -225,7 +240,7 @@ goto :eof
   (set _5=!_5! ¨€  ¨€ )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7! ¨€¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_7
   (set _1=!_1! ¨€¨€¨€¨€ )
@@ -235,7 +250,7 @@ goto :eof
   (set _5=!_5!   ¨€  )
   (set _6=!_6!   ¨€  )
   (set _7=!_7!   ¨€  )
-goto :eof
+goto end
 
 :s_8
   (set _1=!_1! ¨€¨€¨€¨€ )
@@ -245,7 +260,7 @@ goto :eof
   (set _5=!_5! ¨€  ¨€ )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7! ¨€¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_9
   (set _1=!_1! ¨€¨€¨€¨€ )
@@ -255,7 +270,7 @@ goto :eof
   (set _5=!_5!    ¨€ )
   (set _6=!_6!    ¨€ )
   (set _7=!_7!    ¨€ )
-goto :eof
+goto end
 
 :s_-
   (set _1=!_1!      )
@@ -265,7 +280,7 @@ goto :eof
   (set _5=!_5!      )
   (set _6=!_6!      )
   (set _7=!_7!      )
-goto :eof
+goto end
 
 :s_.
   (set _1=!_1!      )
@@ -275,7 +290,7 @@ goto :eof
   (set _5=!_5!      )
   (set _6=!_6!      )
   (set _7=!_7!  ¨€   )
-goto :eof
+goto end
 
 :s_a
   (set _1=!_1!  ¨€¨€  )
@@ -285,7 +300,7 @@ goto :eof
   (set _5=!_5! ¨€  ¨€ )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7! ¨€  ¨€ )
-goto :eof
+goto end
 
 :s_b
   (set _1=!_1! ¨€¨€¨€  )
@@ -295,7 +310,7 @@ goto :eof
   (set _5=!_5! ¨€  ¨€ )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7! ¨€¨€¨€  )
-goto :eof
+goto end
 
 :s_c
   (set _1=!_1!  ¨€¨€  )
@@ -305,7 +320,7 @@ goto :eof
   (set _5=!_5! ¨€    )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7!  ¨€¨€  )
-goto :eof
+goto end
 
 :s_d
   (set _1=!_1! ¨€¨€¨€  )
@@ -315,7 +330,7 @@ goto :eof
   (set _5=!_5! ¨€  ¨€ )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7! ¨€¨€¨€  )
-goto :eof
+goto end
 
 :s_e
   (set _1=!_1! ¨€¨€¨€¨€¨€)
@@ -325,7 +340,7 @@ goto :eof
   (set _5=!_5! ¨€    )
   (set _6=!_6! ¨€    )
   (set _7=!_7! ¨€¨€¨€¨€¨€)
-goto :eof
+goto end
 
 :s_f
   (set _1=!_1! ¨€¨€¨€¨€¨€)
@@ -335,7 +350,7 @@ goto :eof
   (set _5=!_5! ¨€    )
   (set _6=!_6! ¨€    )
   (set _7=!_7! ¨€    )
-goto :eof
+goto end
 
 :s_g
   (set _1=!_1!  ¨€¨€  )
@@ -345,7 +360,7 @@ goto :eof
   (set _5=!_5! ¨€ ¨€¨€ )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7!  ¨€¨€  )
-goto :eof
+goto end
 
 :s_h
   (set _1=!_1! ¨€   ¨€)
@@ -355,7 +370,7 @@ goto :eof
   (set _5=!_5! ¨€   ¨€)
   (set _6=!_6! ¨€   ¨€)
   (set _7=!_7! ¨€   ¨€)
-goto :eof
+goto end
 
 :s_i
   (set _1=!_1!   ¨€  )
@@ -365,7 +380,7 @@ goto :eof
   (set _5=!_5!   ¨€  )
   (set _6=!_6!   ¨€  )
   (set _7=!_7!   ¨€  )
-goto :eof
+goto end
 
 :s_j
   (set _1=!_1! ¨€¨€¨€¨€¨€)
@@ -375,7 +390,7 @@ goto :eof
   (set _5=!_5!   ¨€  )
   (set _6=!_6!   ¨€  )
   (set _7=!_7! ¨€¨€   )
-goto :eof
+goto end
 
 :s_k
   (set _1=!_1! ¨€   ¨€)
@@ -385,7 +400,7 @@ goto :eof
   (set _5=!_5! ¨€¨€   )
   (set _6=!_6! ¨€ ¨€  )
   (set _7=!_7! ¨€  ¨€¨€)
-goto :eof
+goto end
 
 :s_l
   (set _1=!_1! ¨€    )
@@ -395,7 +410,7 @@ goto :eof
   (set _5=!_5! ¨€    )
   (set _6=!_6! ¨€    )
   (set _7=!_7! ¨€¨€¨€¨€¨€)
-goto :eof
+goto end
 
 :s_m
   (set _1=!_1! ¨€   ¨€)
@@ -405,7 +420,7 @@ goto :eof
   (set _5=!_5! ¨€   ¨€)
   (set _6=!_6! ¨€   ¨€)
   (set _7=!_7! ¨€   ¨€)
-goto :eof
+goto end
 
 :s_n
   (set _1=!_1! ¨€   ¨€)
@@ -415,7 +430,7 @@ goto :eof
   (set _5=!_5! ¨€  ¨€¨€)
   (set _6=!_6! ¨€  ¨€¨€)
   (set _7=!_7! ¨€   ¨€)
-goto :eof
+goto end
 
 :s_o
   (set _1=!_1!  ¨€¨€¨€ )
@@ -425,7 +440,7 @@ goto :eof
   (set _5=!_5! ¨€   ¨€)
   (set _6=!_6! ¨€   ¨€)
   (set _7=!_7!  ¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_p
   (set _1=!_1! ¨€¨€¨€  )
@@ -435,7 +450,7 @@ goto :eof
   (set _5=!_5! ¨€    )
   (set _6=!_6! ¨€    )
   (set _7=!_7! ¨€    )
-goto :eof
+goto end
 
 :s_q
   (set _1=!_1!  ¨€¨€  )
@@ -445,7 +460,7 @@ goto :eof
   (set _5=!_5! ¨€  ¨€ )
   (set _6=!_6! ¨€ ¨€¨€ )
   (set _7=!_7!  ¨€  ¨€)
-goto :eof
+goto end
 
 :s_r
   (set _1=!_1! ¨€¨€¨€  )
@@ -455,7 +470,7 @@ goto :eof
   (set _5=!_5! ¨€ ¨€  )
   (set _6=!_6! ¨€  ¨€ )
   (set _7=!_7! ¨€  ¨€ )
-goto :eof
+goto end
 
 :s_s
   (set _1=!_1!  ¨€¨€¨€ )
@@ -465,7 +480,7 @@ goto :eof
   (set _5=!_5!    ¨€ )
   (set _6=!_6!    ¨€ )
   (set _7=!_7! ¨€¨€¨€  )
-goto :eof
+goto end
 
 :s_t
   (set _1=!_1! ¨€¨€¨€¨€¨€)
@@ -475,7 +490,7 @@ goto :eof
   (set _5=!_5!   ¨€  )
   (set _6=!_6!   ¨€  )
   (set _7=!_7!   ¨€  )
-goto :eof
+goto end
 
 :s_u
   (set _1=!_1! ¨€   ¨€)
@@ -485,7 +500,7 @@ goto :eof
   (set _5=!_5! ¨€   ¨€)
   (set _6=!_6! ¨€   ¨€)
   (set _7=!_7!  ¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_v
   (set _1=!_1! ¨€   ¨€)
@@ -495,7 +510,7 @@ goto :eof
   (set _5=!_5! ¨€   ¨€)
   (set _6=!_6!  ¨€ ¨€ )
   (set _7=!_7!   ¨€  )
-goto :eof
+goto end
 
 :s_w
   (set _1=!_1! ¨€ ¨€ ¨€)
@@ -505,7 +520,7 @@ goto :eof
   (set _5=!_5! ¨€ ¨€ ¨€)
   (set _6=!_6! ¨€ ¨€ ¨€)
   (set _7=!_7!  ¨€¨€¨€ )
-goto :eof
+goto end
 
 :s_x
   (set _1=!_1! ¨€   ¨€)
@@ -515,7 +530,7 @@ goto :eof
   (set _5=!_5!   ¨€  )
   (set _6=!_6!  ¨€ ¨€ )
   (set _7=!_7! ¨€   ¨€)
-goto :eof
+goto end
 
 :s_y
   (set _1=!_1! ¨€   ¨€)
@@ -525,7 +540,7 @@ goto :eof
   (set _5=!_5!   ¨€  )
   (set _6=!_6!   ¨€  )
   (set _7=!_7!   ¨€  )
-goto :eof
+goto end
 
 :s_z
   (set _1=!_1! ¨€¨€¨€¨€¨€)
@@ -535,7 +550,7 @@ goto :eof
   (set _5=!_5!  ¨€   )
   (set _6=!_6! ¨€    )
   (set _7=!_7! ¨€¨€¨€¨€¨€)
-goto :eof
+goto end
 
 :s_space
   (set _1=!_1!      )
@@ -545,7 +560,7 @@ goto :eof
   (set _5=!_5!      )
   (set _6=!_6!      )
   (set _7=!_7!      )
-goto :eof
+goto end
 
-:eof
+:end
 endlocal

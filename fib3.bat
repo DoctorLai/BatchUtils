@@ -15,7 +15,7 @@ for /l %%g in (1,1,%maxn%) do (
 	set /a a=1
 )
 echo !s!
-goto eof
+goto end
 
 :fib
 set /a n1=%1
@@ -30,6 +30,6 @@ if %nn% gtr 0 (
 :: return value to the first parameter
 set %1=%n1%
 
-:eof
+:end
 
 endlocal

@@ -5,12 +5,26 @@
 :: 16-Sept-2012
 
 setlocal enableextensions enabledelayedexpansion 
-if [%1] neq [] goto start
 
-echo Rot13 ^& Rot5
-echo Usage: %0 text
+:begin
+	if "%1"=="-h" goto help
+	if "%1"=="" goto readin
+	goto start
 
-goto :end
+:readin
+	(set /p _s=) && (
+		call :start !_s!
+		goto readin	
+	) || (
+		goto end
+	)
+
+:help
+	echo Usage: %0 text
+	shift
+	goto begin
+
+goto end
 
 :start
 	set _len=0

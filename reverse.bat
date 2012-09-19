@@ -3,13 +3,27 @@
 :: dr@zhihua-lai.com
 :: http://www.zhihua-lai.com/acm
 
-setlocal
-if [%1] neq [] goto start
+setlocal enableextensions enabledelayedexpansion 
 
-echo Reverse Given Text
-echo Usage: %0 text
+:begin
+	if "%1"=="-h" goto help
+	if "%1"=="" goto readin
+	goto start
 
-goto :end
+:readin
+	(set /p _s=) && (
+		call :start !_s!
+		goto readin	
+	) || (
+		goto end
+	)
+
+:help
+	echo Usage: %0 text
+	shift
+	goto begin
+
+goto end
 
 :start
 	set _len=0
@@ -19,7 +33,7 @@ goto :end
 	set _subs=%_str%
 
 :loop
-	if not defined _subs goto :result
+	if not defined _subs goto result
 
 	::remove the first char
 	set _subs=%_subs:~1%
@@ -34,7 +48,7 @@ goto :end
 
 	echo %s%
 	
-	goto :end
+	goto end
 
 :build
 	:: get the next character

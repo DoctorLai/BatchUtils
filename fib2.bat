@@ -19,7 +19,7 @@ set s= %a% %b%
 	set s=!s! !c!
 	set /a a=b
 	set /a b=c
-	goto :loop
+	goto loop
 
 :print
 	echo !s!
