@@ -1,6 +1,6 @@
 @echo off
 :: chess.bat
-:: acm.zhihua-lai.com
+:: https://helloacm.com
 title Chess Board
 mode con cols=40 lines=20
 cls
@@ -12,7 +12,7 @@ for %%i in (1 2 3 4 5 6 7 8) do (
 	for %%j in (1  2 3 4 5 6 7 8) do (
 		set /a s=(%%i+%%j^)%%2
 		if !s! EQU 0 (
-			set row=!row!¨€
+			set row=!row!Â¨â‚¬
 		) else (
 			set row=!row! 
 		)
