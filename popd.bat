@@ -1,5 +1,5 @@
 @echo off
-if "%PUSHD_COUNT%" == "" (
+if [%PUSHD_COUNT%] == [] (
     echo popd: directory stack empty
     goto :eof
 )
@@ -9,7 +9,7 @@ set TMP=PUSHD%PUSHD_COUNT%
 set TMPFILE=%RANDOM%.tmp
 
 setlocal enabledelayedexpansion
-if "!%TMP%!" == "" (
+if [!%TMP%!] == [] (
     echo popd: directory stack empty
     goto :eof
 )
